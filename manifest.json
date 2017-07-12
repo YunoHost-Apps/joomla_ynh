@@ -3,7 +3,7 @@
     "id": "joomla",
     "packaging_format": 1,
     "description": {
-        "en": "Example package for YunoHost application."
+        "en": "Joomla! is an award-winning content management system."
     },
     "url": "https://www.joomla.org",
     "license": "free",
@@ -26,7 +26,7 @@
                 "name": "domain",
                 "type": "domain",
                 "ask": {
-                    "en": "Choose a domain name for ynhexample"
+                    "en": "Choose a domain name for Joomla"
                 },
                 "example": "example.com"
             },
@@ -34,7 +34,7 @@
                 "name": "path",
                 "type": "path",
                 "ask": {
-                    "en": "Choose a path for ynhexample"
+                    "en": "Choose a path for Joomla"
                 },
                 "example": "/example",
                 "default": "/joomla"
@@ -66,7 +66,7 @@
                 "type": "boolean",
                 "ask": {
                     "en": "Is it a public application?"
-                    
+
                 },
                 "default": true
             }
