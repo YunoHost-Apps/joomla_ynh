@@ -1,6 +1,6 @@
-SOURCE_URL=https://downloads.joomla.org/cms/joomla3/3-7-3/Joomla_3.7.3-Stable-Full_Package.zip?format=zip
-SOURCE_SUM=7040ddfdc4b3f1197230192b6f4c9df8
+SOURCE_URL=https://downloads.joomla.org/cms/joomla3/3-8-6/Joomla_3-8-6-Stable-Full_Package.zip?format=zip
+SOURCE_SUM=1fe170a5777cf18882d250f9a73e6851
 SOURCE_SUM_PRG=md5sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=false
-SOURCE_FILENAME=Joomla_3.7.3-Stable-Full_Package
+SOURCE_FILENAME=Joomla_3-8-6-Stable-Full_Package
