@@ -7,9 +7,10 @@
     },
     "url": "https://www.joomla.org",
     "license": "free",
+    "version": "3.8.7",
     "maintainer": {
         "name": "Anmol Sharma",
-        "email": "anmol@datamol.in"
+        "email": "anmol@datamol.org"
     },
     "requirements": {
         "yunohost": ">> 2.5.6"
