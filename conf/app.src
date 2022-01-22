@@ -1,6 +1,7 @@
-SOURCE_URL=https://downloads.joomla.org/cms/joomla3/3-8-7/Joomla_3-8-7-Stable-Full_Package.zip?format=zip
-SOURCE_SUM=54e4154fd7b4ea3bc948b74c84afd733
-SOURCE_SUM_PRG=md5sum
-SOURCE_FORMAT=zip
+SOURCE_URL=https://github.com/joomla/joomla-cms/releases/download/4.0.6/Joomla_4.0.6-Stable-Full_Package.tar.gz
+SOURCE_SUM=b9c638f47d75cc1f51846d0aeec43763bef4acb94d21fbdc4510cf67834cc314
+SOURCE_SUM_PRG=sha256sum
+SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=false
-SOURCE_FILENAME=Joomla_3-8-7-Stable-Full_Package
+SOURCE_FILENAME=
+SOURCE_EXTRACT=true

@@ -1,7 +1,7 @@
 # Joomla_ynh
 [![Install Joomla with YunoHost](https://install-app.yunohost.org/install-with-yunohost.png)](https://install-app.yunohost.org/?app=joomla)
 
-Joomla! is an award-winning content management system https://www.joomla.org/ <br> <strong>Version:</strong> 3.8.7 <br><br>
+Joomla! is an award-winning content management system https://www.joomla.org/ <br> <strong>Version:</strong> 4.0.6 <br><br>
 
 <h2>Why Joomla?</h2>
 <p>Hundreds of developers have been improving Joomla! since the first version was released in 2005. This immense effort has made Joomla! very popular, easy to use, stable and secure. <strong>See for more details:</strong>https://www.joomla.org/3/</p><br>
