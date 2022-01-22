@@ -6,7 +6,7 @@
         "en": "Joomla! is an award-winning content management system."
     },
     "url": "https://www.joomla.org",
-    "license": "free",
+    "license": "GPL-2.0-only",
     "version": "3.8.7",
     "maintainer": {
         "name": "Anmol Sharma",
@@ -43,7 +43,7 @@
             {
                 "name": "username",
                 "ask": {
-                    "en": "Admin unsername"
+                    "en": "Admin username"
                 },
                 "example": "john"
             },
@@ -59,8 +59,7 @@
                 "type": "password",
                 "ask": {
                     "en": "Password for the admin account (At least 6 characters long)"
-                },
-                "example": "admin@example.com"
+                }
             },
             {
                 "name": "is_public",
