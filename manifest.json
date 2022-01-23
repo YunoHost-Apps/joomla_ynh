@@ -3,72 +3,57 @@
     "id": "joomla",
     "packaging_format": 1,
     "description": {
-        "en": "Joomla! is an award-winning content management system."
+        "en": "A content management system."
     },
+    "version": "4.0.6~ynh1",
     "url": "https://www.joomla.org",
+    "upstream": {
+        "license": "GPL-2.0-only",
+        "website": "https://www.joomla.org/",
+        "admindoc": "https://docs.joomla.org/",
+        "code": "https://github.com/joomla/joomla-cms"
+    },
     "license": "GPL-2.0-only",
-    "version": "3.8.7",
     "maintainer": {
         "name": "Anmol Sharma",
         "email": "anmol@datamol.org"
     },
     "requirements": {
-        "yunohost": ">> 2.5.6"
+        "yunohost": ">= 4.3.0"
     },
     "multi_instance": true,
     "services": [
         "nginx",
-        "php5-fpm",
+        "php7.3-fpm",
         "mysql"
     ],
     "arguments": {
-        "install" : [
+        "install": [
             {
                 "name": "domain",
-                "type": "domain",
-                "ask": {
-                    "en": "Choose a domain name for Joomla"
-                },
-                "example": "example.com"
+                "type": "domain"
             },
             {
                 "name": "path",
                 "type": "path",
-                "ask": {
-                    "en": "Choose a path for Joomla"
-                },
                 "example": "/example",
                 "default": "/joomla"
             },
             {
-                "name": "username",
-                "ask": {
-                    "en": "Admin username"
-                },
-                "example": "john"
-            },
-            {
-                "name": "email",
-                "ask": {
-                    "en": "Admin email"
-                },
-                "example": "admin@example.com"
-            },
-            {
-                "name": "password",
-                "type": "password",
-                "ask": {
-                    "en": "Password for the admin account (At least 6 characters long)"
-                }
+                "name": "admin",
+                "type": "user"
             },
             {
                 "name": "is_public",
                 "type": "boolean",
-                "ask": {
-                    "en": "Is it a public application?"
-
-                },
                 "default": true
+            },
+            {
+                "name": "password",
+                "type": "password",
+                "help": {
+                    "en": "Password must be longer than 8 characters."
+                }
             }
         ]
     }
