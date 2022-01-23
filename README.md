@@ -1,9 +1,9 @@
 # Joomla for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/example.svg)](https://dash.yunohost.org/appci/app/example) ![](https://ci-apps.yunohost.org/ci/badges/example.status.svg)  ![](https://ci-apps.yunohost.org/ci/badges/example.maintain.svg)
-[![Install example with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=example)
+[![Integration level](https://dash.yunohost.org/integration/joomla.svg)](https://dash.yunohost.org/appci/app/joomla) ![](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg)  ![](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
+[![Install Joomla with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=joomla)
 
-> *This package allows you to install example quickly and simply on a YunoHost server.
+> *This package allows you to install Joomla quickly and simply on a YunoHost server.
 If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/install) to learn how to install it.*
 
 ## Overview
