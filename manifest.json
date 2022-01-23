@@ -3,7 +3,7 @@
     "id": "joomla",
     "packaging_format": 1,
     "description": {
-        "en": "Joomla! is an award-winning content management system."
+        "en": "A content management system."
     },
     "version": "4.0.6~ynh1",
     "url": "https://www.joomla.org",
