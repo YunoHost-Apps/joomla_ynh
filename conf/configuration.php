@@ -43,7 +43,7 @@ class JConfig
 	public $user = '__DB_USER__';                       // Database username
 	public $password = '__DB_PWD__';                   // Database password
 	public $db = '__DB_NAME__';                         // Database name
-	public $dbprefix = '';               // Any random string ending with _
+	public $dbprefix = 'ynh_';               // Any random string ending with _
 	public $dbencryption = 0;
 	public $dbsslverifyservercert = false;
 	public $dbsslkey = '';
