@@ -39,6 +39,16 @@
                 "example": "/example",
                 "default": "/joomla"
             },
+            { 
+                "name": "phpversion",
+                "type": "string",
+                "ask": {
+                    "en": "Choose a PHP version you want to use for your app. Yes, 8 is better",
+                    "fr": "Choisissez une version PHP que vous souhaitez utiliser pour votre application. Oui, la 8 est meilleure"
+                },
+                "choices" : ["7.4", "8.0"],
+                "default" : "8.0"
+            },
             {
                 "name": "admin",
                 "type": "user"
