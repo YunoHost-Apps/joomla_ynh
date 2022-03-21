@@ -60,8 +60,6 @@ ynh_script_progression --message="Installing dependencies..."
 
 ynh_install_app_dependencies $pkg_dependencies
 
- ynh_install_app_dependencies "php${phpversion}-fpm"
-
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
