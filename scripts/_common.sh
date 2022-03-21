@@ -3,10 +3,9 @@
 #=================================================
 # COMMON VARIABLES
 #=================================================
-YNH_PHP_VERSION="8.0"
 
 # dependencies used by the app
-pkg_dependencies=""
+pkg_dependencies="php${phpversion}-fpm php${phpversion}-mysql php${phpversion}-xml"
 
 #=================================================
 # PERSONAL HELPERS
