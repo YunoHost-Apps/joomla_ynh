@@ -27,7 +27,6 @@ admin_email=$(ynh_user_get_info $admin 'mail')
 is_public=$YNH_APP_ARG_IS_PUBLIC
 password=$YNH_APP_ARG_PASSWORD
 
-
 app=$YNH_APP_INSTANCE_NAME
 
 #=================================================
