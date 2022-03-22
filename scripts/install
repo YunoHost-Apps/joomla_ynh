@@ -125,9 +125,9 @@ chown $app:$app "$final_path/configuration.php"
 #=================================================
 ynh_script_progression --message="Setuping database..."
 
-ynh_replace_string --match_string="#__" --replace_string="" --target_file="$final_path/installation/sql/mysql/base.sql"
-ynh_replace_string --match_string="#__" --replace_string="" --target_file="$final_path/installation/sql/mysql/extensions.sql"
-ynh_replace_string --match_string="#__" --replace_string="" --target_file="$final_path/installation/sql/mysql/supports.sql"
+ynh_replace_string --match_string="#__" --replace_string="ynh_" --target_file="$final_path/installation/sql/mysql/base.sql"
+ynh_replace_string --match_string="#__" --replace_string="ynh_" --target_file="$final_path/installation/sql/mysql/extensions.sql"
+ynh_replace_string --match_string="#__" --replace_string="ynh_" --target_file="$final_path/installation/sql/mysql/supports.sql"
 
 ynh_mysql_execute_file_as_root --file="$final_path/installation/sql/mysql/base.sql" --database=$db_name
 ynh_mysql_execute_file_as_root --file="$final_path/installation/sql/mysql/extensions.sql" --database=$db_name
@@ -135,10 +135,10 @@ ynh_mysql_execute_file_as_root --file="$final_path/installation/sql/mysql/suppor
 
 JUSERID=$[ ( $RANDOM % 100 )  + 1 ]
 JPASS="$(echo -n "$password" | md5sum | awk '{ print $1 }' )"
-ynh_mysql_execute_as_root --database=$db_name --sql="INSERT INTO \`users\` (\`id\`, \`name\`, \`username\`, \`email\`, \`password\`, \`block\`, \`sendEmail\`, \`registerDate\`, \`lastvisitDate\`, \`activation\`, \`params\`, \`lastResetTime\`, \`resetCount\`, \`otpKey\`, \`otep\`, \`requireReset\`) VALUES ('${JUSERID}', 'Me', '${admin}', '${admin_email}', '${JPASS}', '0', '0', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '', '', '0000-00-00 00:00:00.000000', '0', '', '', '0');"
-ynh_mysql_execute_as_root --database=$db_name --sql="INSERT INTO \`user_usergroup_map\` (\`user_id\`, \`group_id\`) VALUES ('${JUSERID}', '8');"
+ynh_mysql_execute_as_root --database=$db_name --sql="INSERT INTO \`ynh_users\` (\`id\`, \`name\`, \`username\`, \`email\`, \`password\`, \`block\`, \`sendEmail\`, \`registerDate\`, \`lastvisitDate\`, \`activation\`, \`params\`, \`lastResetTime\`, \`resetCount\`, \`otpKey\`, \`otep\`, \`requireReset\`) VALUES ('${JUSERID}', 'Me', '${admin}', '${admin_email}', '${JPASS}', '0', '0', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '', '', '0000-00-00 00:00:00.000000', '0', '', '', '0');"
+ynh_mysql_execute_as_root --database=$db_name --sql="INSERT INTO \`ynh_user_usergroup_map\` (\`user_id\`, \`group_id\`) VALUES ('${JUSERID}', '8');"
 JUSERINC=$((JUSERID+1))
-ynh_mysql_execute_as_root --database=$db_name --sql="ALTER TABLE \`users\` auto_increment = ${JUSERINC};"
+ynh_mysql_execute_as_root --database=$db_name --sql="ALTER TABLE \`ynh_users\` auto_increment = ${JUSERINC};"
 
 ynh_secure_remove --file="$final_path/installation"
 
