@@ -29,6 +29,7 @@ password=$YNH_APP_ARG_PASSWORD
 app=$YNH_APP_INSTANCE_NAME
 
 admin_email=$(ynh_user_get_info --username="$admin" --key="mail")
+db_prefix="$(ynh_string_random --length="4")_"
 
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
@@ -49,6 +50,7 @@ ynh_script_progression --message="Storing installation settings..."
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_app_setting_set --app=$app --key=admin --value=$admin
+ynh_app_setting_set --app=$app --key=db_prefix --value=$db_prefix
 
 #=================================================
 # STANDARD MODIFICATIONS
@@ -124,9 +126,9 @@ chown $app:$app "$final_path/configuration.php"
 #=================================================
 ynh_script_progression --message="Setuping database..."
 
-ynh_replace_string --match_string="#__" --replace_string="ynh_" --target_file="$final_path/installation/sql/mysql/base.sql"
-ynh_replace_string --match_string="#__" --replace_string="ynh_" --target_file="$final_path/installation/sql/mysql/extensions.sql"
-ynh_replace_string --match_string="#__" --replace_string="ynh_" --target_file="$final_path/installation/sql/mysql/supports.sql"
+ynh_replace_string --match_string="#__" --replace_string="$db_prefix" --target_file="$final_path/installation/sql/mysql/base.sql"
+ynh_replace_string --match_string="#__" --replace_string="$db_prefix" --target_file="$final_path/installation/sql/mysql/extensions.sql"
+ynh_replace_string --match_string="#__" --replace_string="$db_prefix" --target_file="$final_path/installation/sql/mysql/supports.sql"
 
 ynh_mysql_execute_file_as_root --file="$final_path/installation/sql/mysql/base.sql" --database=$db_name
 ynh_mysql_execute_file_as_root --file="$final_path/installation/sql/mysql/extensions.sql" --database=$db_name
@@ -134,10 +136,10 @@ ynh_mysql_execute_file_as_root --file="$final_path/installation/sql/mysql/suppor
 
 JUSERID=$[ ( $RANDOM % 100 )  + 1 ]
 JPASS="$(echo -n "$password" | md5sum | awk '{ print $1 }' )"
-ynh_mysql_execute_as_root --database=$db_name --sql="INSERT INTO \`ynh_users\` (\`id\`, \`name\`, \`username\`, \`email\`, \`password\`, \`block\`, \`sendEmail\`, \`registerDate\`, \`lastvisitDate\`, \`activation\`, \`params\`, \`lastResetTime\`, \`resetCount\`, \`otpKey\`, \`otep\`, \`requireReset\`) VALUES ('${JUSERID}', 'Me', '${admin}', '${admin_email}', '${JPASS}', '0', '0', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '', '', '0000-00-00 00:00:00.000000', '0', '', '', '0');"
-ynh_mysql_execute_as_root --database=$db_name --sql="INSERT INTO \`ynh_user_usergroup_map\` (\`user_id\`, \`group_id\`) VALUES ('${JUSERID}', '8');"
+ynh_mysql_execute_as_root --database=$db_name --sql="INSERT INTO \`${db_prefix}users\` (\`id\`, \`name\`, \`username\`, \`email\`, \`password\`, \`block\`, \`sendEmail\`, \`registerDate\`, \`lastvisitDate\`, \`activation\`, \`params\`, \`lastResetTime\`, \`resetCount\`, \`otpKey\`, \`otep\`, \`requireReset\`) VALUES ('${JUSERID}', 'Me', '${admin}', '${admin_email}', '${JPASS}', '0', '0', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '', '', '0000-00-00 00:00:00.000000', '0', '', '', '0');"
+ynh_mysql_execute_as_root --database=$db_name --sql="INSERT INTO \`${db_prefix}user_usergroup_map\` (\`user_id\`, \`group_id\`) VALUES ('${JUSERID}', '8');"
 JUSERINC=$((JUSERID+1))
-ynh_mysql_execute_as_root --database=$db_name --sql="ALTER TABLE \`ynh_users\` auto_increment = ${JUSERINC};"
+ynh_mysql_execute_as_root --database=$db_name --sql="ALTER TABLE \`${db_prefix}users\` auto_increment = ${JUSERINC};"
 
 ynh_secure_remove --file="$final_path/installation"
 
