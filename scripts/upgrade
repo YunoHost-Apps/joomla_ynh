@@ -118,6 +118,11 @@ chown $app:$app "$final_path/configuration.php"
 #=================================================
 ynh_script_progression --message="Upgrading logrotate configuration..."
 
+mkdir -p "/var/log/$app"
+chmod 750 "/var/log/$app"
+chmod -R o-rwx "/var/log/$app"
+chown -R $app:www-data "/var/log/$app"
+
 # Use logrotate to manage app-specific logfile(s)
 ynh_use_logrotate --non-append
 
