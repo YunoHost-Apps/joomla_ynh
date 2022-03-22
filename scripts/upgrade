@@ -24,6 +24,7 @@ db_name=$(ynh_app_setting_get --app=$app --key=db_name)
 db_user=$db_name
 db_pwd=$(ynh_app_setting_get --app=$app --key=mysqlpwd)
 db_prefix=$(ynh_app_setting_get --app=$app --key=db_prefix)
+secret=$(ynh_app_setting_get --app=$app --key=secret)
 
 #=================================================
 # CHECK VERSION
@@ -57,6 +58,12 @@ ynh_script_progression --message="Ensuring downward compatibility..."
 if [ -z "$db_prefix" ]; then
 	db_prefix=""
 	ynh_app_setting_set --app=$app --key=db_prefix --value=$db_prefix
+fi
+
+# If secret doesn't exist, create it
+if [ -z "$secret" ]; then
+	secret=""
+	ynh_app_setting_set --app=$app --key=secret --value=$secret
 fi
 
 #=================================================
