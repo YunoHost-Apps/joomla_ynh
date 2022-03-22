@@ -48,7 +48,6 @@ ynh_script_progression --message="Storing installation settings..."
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_app_setting_set --app=$app --key=admin --value=$admin
-# ynh_app_setting_set --app=$app --key=phpversion --value=$YNH_PHP_VERSION
 
 #=================================================
 # STANDARD MODIFICATIONS
@@ -105,7 +104,7 @@ ynh_add_nginx_config
 ynh_script_progression --message="Configuring PHP-FPM..."
 
 # Create a dedicated PHP-FPM config
-ynh_add_fpm_config 
+ynh_add_fpm_config
 
 #=================================================
 # SPECIFIC SETUP
