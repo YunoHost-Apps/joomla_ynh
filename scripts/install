@@ -22,12 +22,15 @@ ynh_abort_if_errors
 
 domain=$YNH_APP_ARG_DOMAIN
 path_url=$YNH_APP_ARG_PATH
-admin=$YNH_APP_ARG_ADMIN
-admin_email=$(ynh_user_get_info $admin 'mail')
 is_public=$YNH_APP_ARG_IS_PUBLIC
+admin=$YNH_APP_ARG_ADMIN
 password=$YNH_APP_ARG_PASSWORD
 
 app=$YNH_APP_INSTANCE_NAME
+
+admin_email=$(ynh_user_get_info --username="$admin" --key="mail")
+db_prefix="$(ynh_string_random --length="4")_"
+secret=$(ynh_string_random --length="16")
 
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
@@ -48,6 +51,8 @@ ynh_script_progression --message="Storing installation settings..."
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_app_setting_set --app=$app --key=admin --value=$admin
+ynh_app_setting_set --app=$app --key=db_prefix --value=$db_prefix
+ynh_app_setting_set --app=$app --key=secret --value=$secret
 
 #=================================================
 # STANDARD MODIFICATIONS
@@ -64,7 +69,7 @@ ynh_install_app_dependencies $pkg_dependencies
 ynh_script_progression --message="Configuring system user..."
 
 # Create a system user
-ynh_system_user_create --username=$app --home_dir=$final_path
+ynh_system_user_create --username=$app --home_dir="$final_path"
 
 #=================================================
 # CREATE A MYSQL DATABASE
@@ -105,6 +110,7 @@ ynh_script_progression --message="Configuring PHP-FPM..."
 
 # Create a dedicated PHP-FPM config
 ynh_add_fpm_config
+phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
 # SPECIFIC SETUP
@@ -123,22 +129,19 @@ chown $app:$app "$final_path/configuration.php"
 #=================================================
 ynh_script_progression --message="Setuping database..."
 
-ynh_replace_string --match_string="#__" --replace_string="" --target_file="$final_path/installation/sql/mysql/base.sql"
-ynh_replace_string --match_string="#__" --replace_string="" --target_file="$final_path/installation/sql/mysql/extensions.sql"
-ynh_replace_string --match_string="#__" --replace_string="" --target_file="$final_path/installation/sql/mysql/supports.sql"
+ynh_replace_string --match_string="#__" --replace_string="$db_prefix" --target_file="$final_path/installation/sql/mysql/base.sql"
+ynh_replace_string --match_string="#__" --replace_string="$db_prefix" --target_file="$final_path/installation/sql/mysql/extensions.sql"
+ynh_replace_string --match_string="#__" --replace_string="$db_prefix" --target_file="$final_path/installation/sql/mysql/supports.sql"
 
 ynh_mysql_execute_file_as_root --file="$final_path/installation/sql/mysql/base.sql" --database=$db_name
 ynh_mysql_execute_file_as_root --file="$final_path/installation/sql/mysql/extensions.sql" --database=$db_name
 ynh_mysql_execute_file_as_root --file="$final_path/installation/sql/mysql/supports.sql" --database=$db_name
 
-JUSERID=$[ ( $RANDOM % 100 )  + 1 ]
-JPASS="$(echo -n "$password" | md5sum | awk '{ print $1 }' )"
-ynh_mysql_execute_as_root --database=$db_name --sql="INSERT INTO \`users\` (\`id\`, \`name\`, \`username\`, \`email\`, \`password\`, \`block\`, \`sendEmail\`, \`registerDate\`, \`lastvisitDate\`, \`activation\`, \`params\`, \`lastResetTime\`, \`resetCount\`, \`otpKey\`, \`otep\`, \`requireReset\`) VALUES ('${JUSERID}', 'Me', '${admin}', '${admin_email}', '${JPASS}', '0', '0', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', '', '', '0000-00-00 00:00:00.000000', '0', '', '', '0');"
-ynh_mysql_execute_as_root --database=$db_name --sql="INSERT INTO \`user_usergroup_map\` (\`user_id\`, \`group_id\`) VALUES ('${JUSERID}', '8');"
-JUSERINC=$((JUSERID+1))
-ynh_mysql_execute_as_root --database=$db_name --sql="ALTER TABLE \`users\` auto_increment = ${JUSERINC};"
-
 ynh_secure_remove --file="$final_path/installation"
+
+pushd "$final_path/cli"
+	php$phpversion joomla.php user:add --username "$admin" --name "$admin" --password "$password" --email "$admin_email" --usergroup "Super Users" -n
+popd
 
 #=================================================
 # GENERIC FINALIZATION
@@ -146,6 +149,11 @@ ynh_secure_remove --file="$final_path/installation"
 # SETUP LOGROTATE
 #=================================================
 ynh_script_progression --message="Configuring log rotation..."
+
+mkdir -p "/var/log/$app"
+chmod 750 "/var/log/$app"
+chmod -R o-rwx "/var/log/$app"
+chown -R $app:www-data "/var/log/$app"
 
 # Use logrotate to manage application logfile(s)
 ynh_use_logrotate

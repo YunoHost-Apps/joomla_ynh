@@ -43,7 +43,7 @@ class JConfig
 	public $user = '__DB_USER__';                       // Database username
 	public $password = '__DB_PWD__';                   // Database password
 	public $db = '__DB_NAME__';                         // Database name
-	public $dbprefix = '';               // Any random string ending with _
+	public $dbprefix = '__DB_PREFIX__';               // Any random string ending with _
 	public $dbencryption = 0;
 	public $dbsslverifyservercert = false;
 	public $dbsslkey = '';
@@ -52,7 +52,7 @@ class JConfig
 	public $dbsslcipher = '';
 
 	/* Server Settings */
-	public $secret = '';     // Use something very secure. For example on linux the following command `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-16} | head -n 1`
+	public $secret = '__SECRET__';     // Use something very secure. For example on linux the following command `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1:-16} | head -n 1`
 	public $gzip = false;
 	public $error_reporting = 'default';
 	public $helpurl = 'https://help.joomla.org/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}';
