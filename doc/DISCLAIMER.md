@@ -32,11 +32,15 @@ Enter the following feilds:<br>
 
 ![step 4](dbprefix/fix3.jpg)
 
-6. Enter 'ynh_' in the prefix box and validate
+6. Enter the database prefix you see in the error message of joomla :
+```
+Table 'joomla.JuzW_menu' doesn't exist
+```
+it looks like 'JuzW_' in the prefix box and validate
 
 ![step 5](dbprefix/fix4.jpg)
 
-7. You're done, all tables are prefixed with 'ynh_'
+7. You're done, all tables are prefixed with your prefix
 
 ![step 6](dbprefix/fix5.jpg)
 
