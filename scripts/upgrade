@@ -23,6 +23,8 @@ final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 db_name=$(ynh_app_setting_get --app=$app --key=db_name)
 db_user=$db_name
 db_pwd=$(ynh_app_setting_get --app=$app --key=mysqlpwd)
+db_prefix=$(ynh_app_setting_get --app=$app --key=db_prefix)
+secret=$(ynh_app_setting_get --app=$app --key=secret)
 
 #=================================================
 # CHECK VERSION
@@ -52,13 +54,25 @@ ynh_abort_if_errors
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..."
 
+# If db_prefix doesn't exist, create it
+if [ -z "$db_prefix" ]; then
+	db_prefix=""
+	ynh_app_setting_set --app=$app --key=db_prefix --value=$db_prefix
+fi
+
+# If secret doesn't exist, create it
+if [ -z "$secret" ]; then
+	secret=""
+	ynh_app_setting_set --app=$app --key=secret --value=$secret
+fi
+
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
 ynh_script_progression --message="Making sure dedicated system user exists..."
 
 # Create a dedicated user (if not existing)
-ynh_system_user_create --username=$app --home_dir=$final_path
+ynh_system_user_create --username=$app --home_dir="$final_path"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -102,10 +116,6 @@ ynh_add_fpm_config
 #=================================================
 # SPECIFIC UPGRADE
 #=================================================
-# ...
-#=================================================
-
-#=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression --message="Updating a configuration file..."
@@ -121,6 +131,11 @@ chown $app:$app "$final_path/configuration.php"
 # SETUP LOGROTATE
 #=================================================
 ynh_script_progression --message="Upgrading logrotate configuration..."
+
+mkdir -p "/var/log/$app"
+chmod 750 "/var/log/$app"
+chmod -R o-rwx "/var/log/$app"
+chown -R $app:www-data "/var/log/$app"
 
 # Use logrotate to manage app-specific logfile(s)
 ynh_use_logrotate --non-append
