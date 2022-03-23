@@ -1,4 +1,4 @@
-# Ldap configuration (For now you have to configure it youeself)
+# Ldap configuration (For now you have to configure it yourself)
 Enable ldap Extension<br>
 Enter the following feilds:<br>
 **Host:** localhost<br>
