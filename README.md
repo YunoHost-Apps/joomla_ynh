@@ -28,7 +28,7 @@ Joomla! is a free and open-source content management system (CMS) for publishing
 
 ## Disclaimers / important information
 
-# Ldap configuration (For now you have to configure it youeself)
+# Ldap configuration (For now you have to configure it yourself)
 Enable ldap Extension<br>
 Enter the following feilds:<br>
 **Host:** localhost<br>
