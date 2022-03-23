@@ -18,9 +18,13 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 Joomla! is a free and open-source content management system (CMS) for publishing web content. Over the years Joomla! has won several awards. It is built on a model–view–controller web application framework that can be used independently of the CMS that allows you to build powerful online applications.
 
 
-**Shipped version:** 4.1.0~ynh1
+**Shipped version:** 4.1.0~ynh2
 
 
+
+## Screenshots
+
+![](./doc/screenshots/screenshot.jpg)
 
 ## Disclaimers / important information
 
@@ -37,6 +41,39 @@ Enter the following feilds:<br>
 **Map Full Name:** displayname<br>
 **Map Email:** mail<br>
 **Map User ID:** uid<br>
+
+# LASTEST UPDATE REQUIRE MANUAL FIX WITH PHPMYADMIN
+
+1. Run phpmyadmin after applying the update
+
+2. Select 'joomla' database in the left panel
+
+![step 1](dbprefix/fix1.jpg)
+
+3. Select all tables in the right panel
+
+![step 2](dbprefix/fix2.jpg)
+
+4. Clic on the action menu
+
+![step 3](dbprefix/fix2.5.jpg)
+
+5. Clic add prefix to table
+
+![step 4](dbprefix/fix3.jpg)
+
+6. Enter the database prefix you see in the error message of joomla :
+```
+Table 'joomla.JuzW_menu' doesn't exist
+```
+it looks like 'JuzW_' in the prefix box and validate
+
+![step 5](dbprefix/fix4.jpg)
+
+7. You're done, all tables are prefixed with your prefix
+
+![step 6](dbprefix/fix5.jpg)
+
 
 ## Documentation and resources
 
