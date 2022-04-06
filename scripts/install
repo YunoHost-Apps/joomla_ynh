@@ -29,7 +29,7 @@ password=$YNH_APP_ARG_PASSWORD
 app=$YNH_APP_INSTANCE_NAME
 
 admin_email=$(ynh_user_get_info --username="$admin" --key="mail")
-db_prefix="$(ynh_string_random --length="4")_"
+db_prefix="$(ynh_string_random --length="5" | tr '[:upper:]' '[:lower:]' | tr -d '0123456789')_"
 secret=$(ynh_string_random --length="16")
 
 #=================================================
