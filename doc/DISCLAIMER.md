@@ -12,7 +12,7 @@ Enter the following feilds:<br>
 **Map Email:** mail<br>
 **Map User ID:** uid<br>
 
-# LASTEST UPDATE REQUIRE MANUAL FIX WITH PHPMYADMIN
+# UPDATE TO 4.1.0 REQUIRES MANUAL FIX WITH PHPMYADMIN
 
 1. Run phpmyadmin after applying the update
 
