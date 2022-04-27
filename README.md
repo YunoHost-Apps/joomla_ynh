@@ -18,7 +18,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 Joomla! is a free and open-source content management system (CMS) for publishing web content. Over the years Joomla! has won several awards. It is built on a model–view–controller web application framework that can be used independently of the CMS that allows you to build powerful online applications.
 
 
-**Shipped version:** 4.1.0~ynh3
+**Shipped version:** 4.1.2~ynh1
 
 
 
@@ -42,7 +42,7 @@ Enter the following feilds:<br>
 **Map Email:** mail<br>
 **Map User ID:** uid<br>
 
-# LASTEST UPDATE REQUIRE MANUAL FIX WITH PHPMYADMIN
+# UPDATE TO 4.1.0 REQUIRES MANUAL FIX WITH PHPMYADMIN
 
 1. Run phpmyadmin after applying the update
 
