@@ -7,10 +7,10 @@
 		password="1Strong-Password"
 	; Checks
 		pkg_linter=1
+		setup_private=1
 		setup_sub_dir=1
 		setup_root=1
 		setup_nourl=0
-		setup_private=1
 		setup_public=1
 		upgrade=1
 		# 4.0.6~ynh1
