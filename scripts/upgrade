@@ -48,6 +48,17 @@ ynh_clean_setup () {
 ynh_abort_if_errors
 
 #=================================================
+# BACKUP CONFIGURATION FILE
+#=================================================
+ynh_script_progression --message="Backing up configuration file..."
+
+    # Create a temporary directory
+    tmpdir="$(ynh_smart_mktemp min_size=3)"
+    
+    # Backup the config file in the temp dir
+    cp -a "$final_path/configuration.php" "$tmpdir/configuration.php"
+
+#=================================================
 # STANDARD UPGRADE STEPS
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
@@ -116,11 +127,15 @@ ynh_add_fpm_config
 #=================================================
 # SPECIFIC UPGRADE
 #=================================================
-# UPDATE A CONFIG FILE
+# RESTORE A CONFIG FILE
 #=================================================
-ynh_script_progression --message="Updating a configuration file..."
+ynh_script_progression --message="Restoring configuration file..."
 
-ynh_add_config --template="../conf/configuration.php" --destination="$final_path/configuration.php"
+#ynh_add_config --template="../conf/configuration.php" --destination="$final_path/configuration.php"
+
+    # Restore config file
+    mv -f "$tmpdir/configuration.php" "$final_path/configuration.php"
+    ynh_secure_remove --file="$tmpdir"
 
 chmod 400 "$final_path/configuration.php"
 chown $app:$app "$final_path/configuration.php"
