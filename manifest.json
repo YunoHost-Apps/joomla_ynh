@@ -12,7 +12,8 @@
         "license": "GPL-2.0-only",
         "website": "https://www.joomla.org/",
         "admindoc": "https://docs.joomla.org/",
-        "code": "https://github.com/joomla/joomla-cms"
+        "code": "https://github.com/joomla/joomla-cms",
+        "cpe": "cpe:2.3:a:joomla:joomla\\!"
     },
     "license": "GPL-2.0-only",
     "maintainer": {
