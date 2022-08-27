@@ -21,6 +21,7 @@ Joomla! is a free and open-source content management system (CMS) for publishing
 **Shipped version:** 4.2.0~ynh1
 
 
+
 ## Screenshots
 
 ![Screenshot of Joomla](./doc/screenshots/screenshot.jpg)
