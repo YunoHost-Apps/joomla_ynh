@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/joomla/joomla-cms/releases/download/4.1.5/Joomla_4.1.5-Stable-Full_Package.tar.gz
-SOURCE_SUM=59471fca3e372d7db75ba01fd4ebb986f2c1838f851fbf753c3e6319ffb8d5bb
+SOURCE_URL=https://github.com/joomla/joomla-cms/releases/download/4.2.0/Joomla_4.2.0-Stable-Full_Package.tar.gz
+SOURCE_SUM=b428a5ad13f3c9e465b6a8a855e5a16bea29321e1978da5a3af8f5787addae57
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=false
