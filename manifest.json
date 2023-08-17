@@ -6,7 +6,7 @@
         "en": "Content management system",
         "fr": "Système de gestion de contenu libre"
     },
-    "version": "4.2.6~ynh1",
+    "version": "4.2.6~ynh2",
     "url": "https://www.joomla.org",
     "upstream": {
         "license": "GPL-2.0-only",
