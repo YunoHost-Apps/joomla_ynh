@@ -40,9 +40,9 @@ class JConfig
 	/* Database Settings */
 	public $dbtype = 'mysqli';               // Normally mysqli
 	public $host = 'localhost';              // This is normally set to localhost
-	public $user = '__DB_USER__';                       // Database username
-	public $password = '__DB_PWD__';                   // Database password
-	public $db = '__DB_NAME__';                         // Database name
+	public $user = '__DB_USER__';            // Database username
+	public $password = '__DB_PWD__';         // Database password
+	public $db = '__DB_NAME__';              // Database name
 	public $dbprefix = 'jos_';               // Any random string ending with _
 	public $dbencryption = 0;
 	public $dbsslverifyservercert = false;
@@ -57,7 +57,7 @@ class JConfig
 	public $error_reporting = 'default';
 	public $helpurl = 'https://help.joomla.org/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}';
 	public $tmp_path = '/tmp';                // This path needs to be writable by Joomla!
-	public $log_path = '/var/log/__APP__'; // This path needs to be writable by Joomla!
+	public $log_path = '/var/log/__APP__';    // This path needs to be writable by Joomla!
 	public $live_site = '';                   // Optional, full URL to Joomla install.
 	public $force_ssl = 0;                    // Force areas of the site to be SSL ONLY.  0 = None, 1 = Administrator, 2 = Both Site and Administrator
 
