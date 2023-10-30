@@ -1,0 +1,1 @@
+Joomla! est un système de gestion de contenu (CMS) gratuit et open source pour la publication de contenu Web. Au fil des années, Joomla! a remporté plusieurs prix. Il est construit sur un cadre d'application Web modèle-vue-contrôleur qui peut être utilisé indépendamment du CMS et qui vous permet de créer de puissantes applications en ligne.
