@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # Joomla for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/joomla.svg)](https://dash.yunohost.org/appci/app/joomla) ![Working status](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/joomla.svg)](https://dash.yunohost.org/appci/app/joomla) ![Working status](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
+
 [![Install Joomla with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=joomla)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -77,7 +78,7 @@ it looks like 'JuzW_' in the prefix box and validate
 * Official app website: <https://www.joomla.org/>
 * Official admin documentation: <https://docs.joomla.org/>
 * Upstream app code repository: <https://github.com/joomla/joomla-cms>
-* YunoHost documentation for this app: <https://yunohost.org/app_joomla>
+* YunoHost Store: <https://apps.yunohost.org/app/joomla>
 * Report a bug: <https://github.com/YunoHost-Apps/joomla_ynh/issues>
 
 ## Developer info

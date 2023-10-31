@@ -5,24 +5,25 @@ It shall NOT be edited by hand.
 
 # Joomla pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/joomla.svg)](https://dash.yunohost.org/appci/app/joomla) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/joomla.svg)](https://dash.yunohost.org/appci/app/joomla) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
+
 [![Installer Joomla avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=joomla)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer Joomla rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer Joomla rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 Joomla! is a free and open-source content management system (CMS) for publishing web content. Over the years Joomla! has won several awards. It is built on a model–view–controller web application framework that can be used independently of the CMS that allows you to build powerful online applications.
 
 
 **Version incluse :** 4.2.6~ynh1
 
-## Captures d'écran
+## Captures d’écran
 
-![Capture d'écran de Joomla](./doc/screenshots/screenshot.jpg)
+![Capture d’écran de Joomla](./doc/screenshots/screenshot.jpg)
 
 ## Avertissements / informations importantes
 
@@ -74,10 +75,10 @@ it looks like 'JuzW_' in the prefix box and validate
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://www.joomla.org/>
-* Documentation officielle de l'admin : <https://docs.joomla.org/>
-* Dépôt de code officiel de l'app : <https://github.com/joomla/joomla-cms>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_joomla>
+* Site officiel de l’app : <https://www.joomla.org/>
+* Documentation officielle de l’admin : <https://docs.joomla.org/>
+* Dépôt de code officiel de l’app : <https://github.com/joomla/joomla-cms>
+* YunoHost Store: <https://apps.yunohost.org/app/joomla>
 * Signaler un bug : <https://github.com/YunoHost-Apps/joomla_ynh/issues>
 
 ## Informations pour les développeurs
@@ -92,4 +93,4 @@ ou
 sudo yunohost app upgrade joomla -u https://github.com/YunoHost-Apps/joomla_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>
