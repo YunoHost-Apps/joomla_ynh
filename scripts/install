@@ -62,15 +62,15 @@ chown $app:$app "$install_dir/configuration.php"
 #=================================================
 ynh_script_progression --message="Setuping database..."
 
-#ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/base.sql" --database=$db_name
-#ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/extensions.sql" --database=$db_name
-#ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/supports.sql" --database=$db_name
+ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/base.sql" --database=$db_name
+ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/extensions.sql" --database=$db_name
+ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/supports.sql" --database=$db_name
 
-#ynh_secure_remove --file="$install_dir/installation"
+ynh_secure_remove --file="$install_dir/installation"
 
-#pushd "$install_dir"
-#	php$phpversion cli/joomla.php user:add --username "$admin" --name "$admin" --password "$password" --email "$email" --usergroup "Super Users" -n
-#popd
+pushd "$install_dir"
+	php$phpversion cli/joomla.php user:add --username "$admin" --name "$admin" --password "$password" --email "$email" --usergroup "Super Users" -n
+popd
 
 #=================================================
 # GENERIC FINALIZATION
