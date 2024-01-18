@@ -28,7 +28,6 @@ ynh_app_setting_set --app=$app --key=secret --value=$secret
 #=================================================
 ynh_script_progression --message="Setting up source files..."
 
-# Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir"
 
 chmod -R o-rwx "$install_dir"
@@ -39,10 +38,8 @@ chown -R $app:www-data "$install_dir"
 #=================================================
 ynh_script_progression --message="Configuring PHP-FPM..."
 
-# Create a dedicated PHP-FPM config
 ynh_add_fpm_config
 
-# Create a dedicated NGINX config
 ynh_add_nginx_config
 
 #=================================================
@@ -69,7 +66,7 @@ ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/suppo
 ynh_secure_remove --file="$install_dir/installation"
 
 pushd "$install_dir"
-	php$phpversion cli/joomla.php user:add --username "$admin" --name "$admin" --password "$password" --email "$email" --usergroup "Super Users" -n
+	php$phpversion cli/joomla.php user:add --username="$admin" --name="$admin" --password="$password" --email="$email" --usergroup="Super Users" -n
 popd
 
 #=================================================
