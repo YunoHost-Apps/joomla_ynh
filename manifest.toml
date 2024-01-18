@@ -63,7 +63,7 @@ ram.runtime = "50M"
     main.url = "/"
 
     [resources.apt]
-    packages = "mariadb-server, php8.1-xml, php8.1-cli, php8.1-posix, php8.1-bz2, php8.1-zip, php8.1-memcache, php8.1-memcached, php8.1-ldap, php8.1-curl, php8.1-sockets, php8.1-mcrypt, php8.1-mysql, php8.1-mysqli, php8.1-gd, php8.1-fileinfo, php8.1-mbstring"
+    packages = "mariadb-server, php8.1-xml, php8.1-cli, php8.1-posix, php8.1-bz2, php8.1-zip, php8.1-memcache, php8.1-memcached, php8.1-ldap, php8.1-curl, php8.1-sockets, php8.1-mcrypt, php8.1-mysql, php8.1-gd, php8.1-fileinfo, php8.1-mbstring"
 
     [resources.database]
     type = "mysql"
