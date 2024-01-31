@@ -59,6 +59,8 @@ chown $app:$app "$install_dir/configuration.php"
 #=================================================
 ynh_script_progression --message="Setuping database..."
 
+ynh_mysql_execute_as_root --sql="GRANT ALL PRIVILEGES ON *.* TO '$db_user'@'localhost' IDENTIFIED BY '$db_pwd' WITH GRANT OPTION; FLUSH PRIVILEGES;" --database=$db_name
+
 ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/base.sql" --database=$db_name
 ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/extensions.sql" --database=$db_name
 ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/supports.sql" --database=$db_name
