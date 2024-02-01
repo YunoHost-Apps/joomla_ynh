@@ -69,10 +69,10 @@ ynh_script_progression --message="Setuping database..."
 
 
 pushd "$install_dir"
-	php$phpversion cli/joomla.php user:add --username="$admin" --name="$admin" --password="$password" --email="$email" --usergroup="Super Users" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix -n
+	php$phpversion cli/joomla.php install --admin-user="$admin" --admin-username="$admin" --admin-password="$password" --admin-email="$email" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix --site-name=yunojoomla -n
 popd
 
-ynh_secure_remove --file="$install_dir/installation"
+# ynh_secure_remove --file="$install_dir/installation"
 
 #=================================================
 # GENERIC FINALIZATION
