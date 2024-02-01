@@ -10,53 +10,10 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# LOAD SETTINGS
-#=================================================
-ynh_script_progression --message="Loading installation settings..."
-
-app=$YNH_APP_INSTANCE_NAME
-
-domain=$(ynh_app_setting_get --app=$app --key=domain)
-path_url=$(ynh_app_setting_get --app=$app --key=path)
-admin=$(ynh_app_setting_get --app=$app --key=admin)
-final_path=$(ynh_app_setting_get --app=$app --key=final_path)
-db_name=$(ynh_app_setting_get --app=$app --key=db_name)
-db_user=$db_name
-db_pwd=$(ynh_app_setting_get --app=$app --key=mysqlpwd)
-db_prefix=$(ynh_app_setting_get --app=$app --key=db_prefix)
-secret=$(ynh_app_setting_get --app=$app --key=secret)
-
-#=================================================
 # CHECK VERSION
 #=================================================
-ynh_script_progression --message="Checking version..."
 
 upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
-# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
-#=================================================
-ynh_script_progression --message="Backing up the app before upgrading (may take a while)..."
-
-# Backup the current version of the app
-ynh_backup_before_upgrade
-ynh_clean_setup () {
-	# Restore it if the upgrade fails
-	ynh_restore_upgradebackup
-}
-# Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
-
-#=================================================
-# BACKUP CONFIGURATION FILE
-#=================================================
-ynh_script_progression --message="Backing up configuration file..."
-
-    # Create a temporary directory
-    tmpdir="$(ynh_smart_mktemp min_size=3)"
-    
-    # Backup the config file in the temp dir
-    cp -a "$final_path/configuration.php" "$tmpdir/configuration.php"
 
 #=================================================
 # STANDARD UPGRADE STEPS
@@ -65,25 +22,11 @@ ynh_script_progression --message="Backing up configuration file..."
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..."
 
-# If db_prefix doesn't exist, create it
-if [ -z "$db_prefix" ]; then
-	db_prefix=""
-	ynh_app_setting_set --app=$app --key=db_prefix --value=$db_prefix
-fi
-
 # If secret doesn't exist, create it
 if [ -z "$secret" ]; then
 	secret=""
 	ynh_app_setting_set --app=$app --key=secret --value=$secret
 fi
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-ynh_script_progression --message="Making sure dedicated system user exists..."
-
-# Create a dedicated user (if not existing)
-ynh_system_user_create --username=$app --home_dir="$final_path"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -94,19 +37,18 @@ then
 	ynh_script_progression --message="Upgrading source files..."
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$final_path"
+	ynh_setup_source --dest_dir="$install_dir" --keep="configuration.php"
+	# Run internal update of joomla fixing missing database tables
+	pushd "$install_dir"
+		php$phpversion cli/joomla.php core:update
+	popd
+	# Remove installation directory
+	ynh_secure_remove --file="$install_dir/installation"
+
 fi
 
-chmod 750 "$final_path"
-chmod -R o-rwx "$final_path"
-chown -R $app:www-data "$final_path"
-
-#=================================================
-# UPGRADE DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Upgrading dependencies..."
-
-ynh_install_app_dependencies $pkg_dependencies
+chmod -R o-rwx "$install_dir"
+chown -R $app:www-data "$install_dir"
 
 #=================================================
 # PHP-FPM CONFIGURATION
@@ -116,36 +58,8 @@ ynh_script_progression --message="Upgrading PHP-FPM configuration..."
 # Create a dedicated PHP-FPM config
 ynh_add_fpm_config
 
-#=================================================
-# NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Upgrading NGINX web server configuration..."
-
 # Create a dedicated NGINX config
 ynh_add_nginx_config
-
-#=================================================
-# SPECIFIC UPGRADE
-#=================================================
-# RESTORE A CONFIG FILE
-#=================================================
-ynh_script_progression --message="Restoring configuration file..."
-
-#ynh_add_config --template="../conf/configuration.php" --destination="$final_path/configuration.php"
-
-    # Restore config file
-    mv -f "$tmpdir/configuration.php" "$final_path/configuration.php"
-    ynh_secure_remove --file="$tmpdir"
-
-chmod 400 "$final_path/configuration.php"
-chown $app:$app "$final_path/configuration.php"
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression --message="Upgrading logrotate configuration..."
 
 mkdir -p "/var/log/$app"
 chmod 750 "/var/log/$app"
@@ -156,11 +70,16 @@ chown -R $app:www-data "/var/log/$app"
 ynh_use_logrotate --non-append
 
 #=================================================
-# RELOAD NGINX
+# SPECIFIC UPGRADE
 #=================================================
-ynh_script_progression --message="Reloading NGINX web server..."
+# RESTORE A CONFIG FILE
+#=================================================
+# ynh_script_progression --message="Restoring configuration file..."
 
-ynh_systemd_action --service_name=nginx --action=reload
+# ynh_add_config --template="configuration.php" --destination="$install_dir/configuration.php"
+
+# chmod 400 "$install_dir/configuration.php"
+# chown $app:$app "$install_dir/configuration.php"
 
 #=================================================
 # END OF SCRIPT

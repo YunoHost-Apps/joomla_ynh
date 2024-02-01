@@ -16,62 +16,18 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-Joomla! is a free and open-source content management system (CMS) for publishing web content. Over the years Joomla! has won several awards. It is built on a model–view–controller web application framework that can be used independently of the CMS that allows you to build powerful online applications.
+Joomla! est un système de gestion de contenu (CMS) gratuit et open source pour la publication de contenu Web. Au fil des années, Joomla! a remporté plusieurs prix. Il est construit sur un cadre d'application Web modèle-vue-contrôleur qui peut être utilisé indépendamment du CMS et qui vous permet de créer de puissantes applications en ligne.
 
 
-**Version incluse :** 4.2.6~ynh1
+**Version incluse :** 4.4.2~ynh1
 
 ## Captures d’écran
 
 ![Capture d’écran de Joomla](./doc/screenshots/screenshot.jpg)
 
-## Avertissements / informations importantes
+## :red_circle: Fonctions indésirables
 
-# Ldap configuration (For now you have to configure it yourself)
-Enable ldap Extension<br>
-Enter the following feilds:<br>
-**Host:** localhost<br>
-**Port**:389<br>
-**LdapV3:** Yes<br>
-**Authorisation Method:** Bind and search<br>
-**Base DN:** dc=yunohost,dc=org<br>
-**uid:** uid=[search]<br>
-**User's DN:** ou=users,dc=yunohost,dc=org<br>
-**Map Full Name:** displayname<br>
-**Map Email:** mail<br>
-**Map User ID:** uid<br>
-
-# UPDATE TO 4.1.0 REQUIRES MANUAL FIX WITH PHPMYADMIN
-
-1. Run phpmyadmin after applying the update
-
-2. Select 'joomla' database in the left panel
-
-![step 1](./doc/dbprefix/fix1.jpg)
-
-3. Select all tables in the right panel
-
-![step 2](./doc/dbprefix/fix2.jpg)
-
-4. Clic on the action menu
-
-![step 3](./doc/dbprefix/fix2.5.jpg)
-
-5. Clic add prefix to table
-
-![step 4](./doc/dbprefix/fix3.jpg)
-
-6. Enter the database prefix you see in the error message of joomla :
-```
-Table 'joomla.JuzW_menu' doesn't exist
-```
-it looks like 'JuzW_' in the prefix box and validate
-
-![step 5](./doc/dbprefix/fix4.jpg)
-
-7. You're done, all tables are prefixed with your prefix
-
-![step 6](./doc/dbprefix/fix5.jpg)
+- **Package not maintained**: This YunoHost package is not maintained and needs adoption.
 
 ## Documentations et ressources
 
