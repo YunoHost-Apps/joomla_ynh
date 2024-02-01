@@ -38,6 +38,11 @@ then
 
 	# Download, check integrity, uncompress and patch the source from app.src
 	ynh_setup_source --dest_dir="$install_dir" --keep="configuration.php"
+	# Run internal update of joomla fixing missing database tables
+	pushd "$install_dir"
+		php$phpversion cli/joomla.php core:update
+	popd
+
 fi
 
 chmod -R o-rwx "$install_dir"
@@ -67,12 +72,12 @@ ynh_use_logrotate --non-append
 #=================================================
 # RESTORE A CONFIG FILE
 #=================================================
-ynh_script_progression --message="Restoring configuration file..."
+# ynh_script_progression --message="Restoring configuration file..."
 
-ynh_add_config --template="configuration.php" --destination="$install_dir/configuration.php"
+# ynh_add_config --template="configuration.php" --destination="$install_dir/configuration.php"
 
-chmod 400 "$install_dir/configuration.php"
-chown $app:$app "$install_dir/configuration.php"
+# chmod 400 "$install_dir/configuration.php"
+# chown $app:$app "$install_dir/configuration.php"
 
 #=================================================
 # END OF SCRIPT
