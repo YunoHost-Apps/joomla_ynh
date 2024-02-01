@@ -15,7 +15,7 @@ source /usr/share/yunohost/helpers
 
 email=$(ynh_user_get_info --username="$admin" --key="mail")
 secret=$(ynh_string_random --length="16")
-db_prefix="$(ynh_string_random --length="5" | tr '[:upper:]' '[:lower:]' | tr -d '0123456789')_
+db_prefix="$(ynh_string_random --length="5" | tr '[:upper:]' '[:lower:]' | tr -d '0123456789')_"
 
 #=================================================
 # STORE SETTINGS FROM MANIFEST
