@@ -15,6 +15,7 @@ source /usr/share/yunohost/helpers
 
 email=$(ynh_user_get_info --username="$admin" --key="mail")
 secret=$(ynh_string_random --length="16")
+db_prefix="$(ynh_string_random --length="5" | tr '[:upper:]' '[:lower:]' | tr -d '0123456789')_
 
 #=================================================
 # STORE SETTINGS FROM MANIFEST
@@ -22,6 +23,7 @@ secret=$(ynh_string_random --length="16")
 ynh_script_progression --message="Storing installation settings..."
 
 ynh_app_setting_set --app=$app --key=secret --value=$secret
+ynh_app_setting_set --app=$app --key=db_prefix --value=$db_prefix
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -59,17 +61,18 @@ chown $app:$app "$install_dir/configuration.php"
 #=================================================
 ynh_script_progression --message="Setuping database..."
 
-ynh_mysql_execute_as_root --sql="GRANT ALL PRIVILEGES ON *.* TO '$db_user'@'localhost' IDENTIFIED BY '$db_pwd' WITH GRANT OPTION; FLUSH PRIVILEGES;" --database=$db_name
+# ynh_mysql_execute_as_root --sql="GRANT ALL PRIVILEGES ON *.* TO '$db_user'@'localhost' IDENTIFIED BY '$db_pwd' WITH GRANT OPTION; FLUSH PRIVILEGES;" --database=$db_name
 
-ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/base.sql" --database=$db_name
-ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/extensions.sql" --database=$db_name
-ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/supports.sql" --database=$db_name
+# ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/base.sql" --database=$db_name
+# ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/extensions.sql" --database=$db_name
+# ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/supports.sql" --database=$db_name
 
-ynh_secure_remove --file="$install_dir/installation"
 
 pushd "$install_dir"
-	php$phpversion cli/joomla.php user:add --username="$admin" --name="$admin" --password="$password" --email="$email" --usergroup="Super Users" -n
+	php$phpversion cli/joomla.php user:add --username="$admin" --name="$admin" --password="$password" --email="$email" --usergroup="Super Users" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix -n
 popd
+
+ynh_secure_remove --file="$install_dir/installation"
 
 #=================================================
 # GENERIC FINALIZATION
