@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # Joomla for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/joomla.svg)](https://dash.yunohost.org/appci/app/joomla) ![Working status](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/joomla.svg)](https://dash.yunohost.org/appci/app/joomla) ![Working status](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
+
 [![Install Joomla with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=joomla)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -18,66 +19,22 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 Joomla! is a free and open-source content management system (CMS) for publishing web content. Over the years Joomla! has won several awards. It is built on a model–view–controller web application framework that can be used independently of the CMS that allows you to build powerful online applications.
 
 
-**Shipped version:** 4.2.6~ynh1
+**Shipped version:** 4.4.2~ynh1
 
 ## Screenshots
 
 ![Screenshot of Joomla](./doc/screenshots/screenshot.jpg)
 
-## Disclaimers / important information
+## :red_circle: Antifeatures
 
-# Ldap configuration (For now you have to configure it yourself)
-Enable ldap Extension<br>
-Enter the following feilds:<br>
-**Host:** localhost<br>
-**Port**:389<br>
-**LdapV3:** Yes<br>
-**Authorisation Method:** Bind and search<br>
-**Base DN:** dc=yunohost,dc=org<br>
-**uid:** uid=[search]<br>
-**User's DN:** ou=users,dc=yunohost,dc=org<br>
-**Map Full Name:** displayname<br>
-**Map Email:** mail<br>
-**Map User ID:** uid<br>
-
-# UPDATE TO 4.1.0 REQUIRES MANUAL FIX WITH PHPMYADMIN
-
-1. Run phpmyadmin after applying the update
-
-2. Select 'joomla' database in the left panel
-
-![step 1](./doc/dbprefix/fix1.jpg)
-
-3. Select all tables in the right panel
-
-![step 2](./doc/dbprefix/fix2.jpg)
-
-4. Clic on the action menu
-
-![step 3](./doc/dbprefix/fix2.5.jpg)
-
-5. Clic add prefix to table
-
-![step 4](./doc/dbprefix/fix3.jpg)
-
-6. Enter the database prefix you see in the error message of joomla :
-```
-Table 'joomla.JuzW_menu' doesn't exist
-```
-it looks like 'JuzW_' in the prefix box and validate
-
-![step 5](./doc/dbprefix/fix4.jpg)
-
-7. You're done, all tables are prefixed with your prefix
-
-![step 6](./doc/dbprefix/fix5.jpg)
+- **Package not maintained**: This YunoHost package is not maintained and needs adoption.
 
 ## Documentation and resources
 
 * Official app website: <https://www.joomla.org/>
 * Official admin documentation: <https://docs.joomla.org/>
 * Upstream app code repository: <https://github.com/joomla/joomla-cms>
-* YunoHost documentation for this app: <https://yunohost.org/app_joomla>
+* YunoHost Store: <https://apps.yunohost.org/app/joomla>
 * Report a bug: <https://github.com/YunoHost-Apps/joomla_ynh/issues>
 
 ## Developer info

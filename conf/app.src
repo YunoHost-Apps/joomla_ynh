@@ -1,7 +1,0 @@
-SOURCE_URL=https://github.com/joomla/joomla-cms/releases/download/4.2.6/Joomla_4.2.6-Stable-Full_Package.tar.gz
-SOURCE_SUM=96db699bb056966f0e755522621f83a7161f651066ad4ed192d5d50071c1ce67
-SOURCE_SUM_PRG=sha256sum
-SOURCE_FORMAT=tar.gz
-SOURCE_IN_SUBDIR=false
-SOURCE_FILENAME=
-SOURCE_EXTRACT=true
