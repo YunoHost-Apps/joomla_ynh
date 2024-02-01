@@ -49,30 +49,21 @@ ynh_add_nginx_config
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding a configuration file..."
+# ynh_script_progression --message="Adding a configuration file..."
 
-ynh_add_config --template="configuration.php" --destination="$install_dir/configuration.php"
+# ynh_add_config --template="configuration.php" --destination="$install_dir/configuration.php"
 
-chmod 400 "$install_dir/configuration.php"
-chown $app:$app "$install_dir/configuration.php"
+# chmod 400 "$install_dir/configuration.php"
+# chown $app:$app "$install_dir/configuration.php"
 
 #=================================================
 # SETUP DATABASE
 #=================================================
 ynh_script_progression --message="Setuping database..."
 
-# ynh_mysql_execute_as_root --sql="GRANT ALL PRIVILEGES ON *.* TO '$db_user'@'localhost' IDENTIFIED BY '$db_pwd' WITH GRANT OPTION; FLUSH PRIVILEGES;" --database=$db_name
-
-# ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/base.sql" --database=$db_name
-# ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/extensions.sql" --database=$db_name
-# ynh_mysql_execute_file_as_root --file="$install_dir/installation/sql/mysql/supports.sql" --database=$db_name
-
-
 pushd "$install_dir"
-	php$phpversion cli/joomla.php install --admin-user="$admin" --admin-username="$admin" --admin-password="$password" --admin-email="$email" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix --site-name=yunojoomla -n
+	php$phpversion installation/joomla.php install --admin-user="$admin" --admin-username="$admin" --admin-password="$password" --admin-email="$email" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix --site-name="My joomla website" -n
 popd
-
-# ynh_secure_remove --file="$install_dir/installation"
 
 #=================================================
 # GENERIC FINALIZATION
