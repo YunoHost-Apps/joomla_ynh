@@ -38,12 +38,12 @@ then
 
 	# Download, check integrity, uncompress and patch the source from app.src
 	ynh_setup_source --dest_dir="$install_dir" --keep="configuration.php"
-	# Remove installation directory
-	ynh_secure_remove --file="$install_dir/installation"
 	# Run internal update of joomla fixing missing database tables
 	pushd "$install_dir"
 		php$phpversion cli/joomla.php core:update
 	popd
+	# Remove installation directory
+	ynh_secure_remove --file="$install_dir/installation"
 
 fi
 
