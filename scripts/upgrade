@@ -44,7 +44,8 @@ then
 	popd
 	# Remove installation directory
 	ynh_secure_remove --file="$install_dir/installation"
-
+        # Fix #34
+        ynh_secure_remove --file="$install_dir/administrator/cache/autoload_psr4.php" 
 fi
 
 chmod -R o-rwx "$install_dir"
