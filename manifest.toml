@@ -5,7 +5,7 @@ name = "Joomla"
 description.en = "Content management system"
 description.fr = "Système de gestion de contenu libre"
 
-version = "4.4.2~ynh1"
+version = "4.4.3~ynh1"
 
 maintainers = [""]
 
@@ -50,10 +50,11 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/joomla/joomla-cms/releases/download/4.4.2/Joomla_4.4.2-Stable-Full_Package.tar.gz"
-        sha256 = "5cf33e8debff60f9dc4ee5eaee81a61dada0abf193807c31c9e70375841fd3d8"
+        url = "https://github.com/joomla/joomla-cms/releases/download/4.4.3/Joomla_4.4.3-Stable-Full_Package.tar.gz"
+        sha256 = "f958b0c1c928842aee176a3c0a0687d5e966a72bf2765cf8b63566ac7128906b"
         in_subdir = false
-        autoupdate.strategy = "latest_github_tag"
+        autoupdate.strategy = "latest_github_release"
+        autoupdate.asset = "^Joomla_.*-Stable-Full_Package.tar.gz$"
 
     [resources.system_user]
 
