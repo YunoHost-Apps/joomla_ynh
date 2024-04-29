@@ -19,7 +19,7 @@ Il NE doit PAS être modifié à la main.
 Joomla! est un système de gestion de contenu (CMS) gratuit et open source pour la publication de contenu Web. Au fil des années, Joomla! a remporté plusieurs prix. Il est construit sur un cadre d'application Web modèle-vue-contrôleur qui peut être utilisé indépendamment du CMS et qui vous permet de créer de puissantes applications en ligne.
 
 
-**Version incluse :** 4.4.3~ynh1
+**Version incluse :** 5.1.0~ynh1
 
 ## Captures d’écran
 
@@ -27,7 +27,7 @@ Joomla! est un système de gestion de contenu (CMS) gratuit et open source pour 
 
 ## :red_circle: Anti-fonctionnalités
 
-- **Paquet non maintenu**: Ce package YunoHost n'est plus maintenu et doit être adopté.
+- **Paquet non maintenu **: Ce package YunoHost n'est plus maintenu et doit être adopté.
 
 ## Documentations et ressources
 
