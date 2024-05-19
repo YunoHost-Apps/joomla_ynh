@@ -3,7 +3,7 @@
 请勿手动编辑。
 -->
 
-# YunoHost 的 Joomla
+# YunoHost 上的 Joomla
 
 [![集成程度](https://dash.yunohost.org/integration/joomla.svg)](https://dash.yunohost.org/appci/app/joomla) ![工作状态](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
 
@@ -27,7 +27,7 @@ Joomla! is a free and open-source content management system (CMS) for publishing
 
 ## :red_circle: 负面特征
 
-- **Package not maintained**: This YunoHost package is not maintained and needs adoption.
+- **Package not maintained**: This YunoHost package is not actively maintained and needs adoption. This means that minimal maintenance is made by volunteers who don't use the app, so you should expect the app to lose reliability over time. You can [learn how to package](https://yunohost.org/packaging_apps_intro) if you'd like to adopt it.
 
 ## 文档与资源
 

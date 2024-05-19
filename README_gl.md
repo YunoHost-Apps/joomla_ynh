@@ -25,9 +25,9 @@ Joomla! is a free and open-source content management system (CMS) for publishing
 
 ![Captura de pantalla de Joomla](./doc/screenshots/screenshot.jpg)
 
-## :red_circle: Caraterísticas cuestionables
+## :red_circle: Debes considerar
 
-- **Package not maintained**: This YunoHost package is not maintained and needs adoption.
+- **Package not maintained**: This YunoHost package is not actively maintained and needs adoption. This means that minimal maintenance is made by volunteers who don't use the app, so you should expect the app to lose reliability over time. You can [learn how to package](https://yunohost.org/packaging_apps_intro) if you'd like to adopt it.
 
 ## Documentación e recursos
 
