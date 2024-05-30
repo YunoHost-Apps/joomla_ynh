@@ -19,7 +19,7 @@ NON debe editarse manualmente.
 Joomla! is a free and open-source content management system (CMS) for publishing web content. Over the years Joomla! has won several awards. It is built on a model–view–controller web application framework that can be used independently of the CMS that allows you to build powerful online applications.
 
 
-**Versión proporcionada:** 5.1.0~ynh1
+**Versión proporcionada:** 5.1.1~ynh1
 
 ## Capturas de pantalla
 
