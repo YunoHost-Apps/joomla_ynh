@@ -65,6 +65,9 @@ pushd "$install_dir"
 	php$phpversion installation/joomla.php install --admin-user="$admin" --admin-username="$admin" --admin-password="$password" --admin-email="$email" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix --site-name="My joomla website" -n
 popd
 
+# fix config file ownership 
+chown $app:www-data "$install_dir/configuration.php"
+
 #=================================================
 # GENERIC FINALIZATION
 #=================================================
