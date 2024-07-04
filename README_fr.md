@@ -5,7 +5,7 @@ Il NE doit PAS être modifié à la main.
 
 # Joomla pour YunoHost
 
-[![Niveau d’intégration](https://dash.yunohost.org/integration/joomla.svg)](https://dash.yunohost.org/appci/app/joomla) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
+[![Niveau d’intégration](https://dash.yunohost.org/integration/joomla.svg)](https://ci-apps.yunohost.org/ci/apps/joomla/) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
 
 [![Installer Joomla avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=joomla)
 

@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # Joomla YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/joomla.svg)](https://dash.yunohost.org/appci/app/joomla) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/joomla.svg)](https://ci-apps.yunohost.org/ci/apps/joomla/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
 
 [![Instalatu Joomla YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=joomla)
 

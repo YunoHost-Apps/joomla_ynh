@@ -5,7 +5,7 @@
 
 # YunoHost 上的 Joomla
 
-[![集成程度](https://dash.yunohost.org/integration/joomla.svg)](https://dash.yunohost.org/appci/app/joomla) ![工作状态](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
+[![集成程度](https://dash.yunohost.org/integration/joomla.svg)](https://ci-apps.yunohost.org/ci/apps/joomla/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
 
 [![使用 YunoHost 安装 Joomla](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=joomla)
 
