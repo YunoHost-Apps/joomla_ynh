@@ -21,7 +21,6 @@ Joomla! is a free and open-source content management system (CMS) for publishing
 
 **Versi terkirim:** 5.1.3~ynh1
 
-
 ## Tangkapan Layar
 
 ![Tangkapan Layar pada Joomla](./doc/screenshots/screenshot.jpg)
