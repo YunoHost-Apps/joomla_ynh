@@ -28,7 +28,7 @@ fi
 ynh_script_progression --message="Upgrading source files..."
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="configuration.php"
+ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="administrator modules components images language plugins templates configuration.php layouts media"
 # Run internal update of joomla fixing missing database tables
 
 pushd "$install_dir"
