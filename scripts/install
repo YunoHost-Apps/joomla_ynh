@@ -1,13 +1,9 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
+
+ynh_app_setting_set --key=php_upload_max_filesize --value=128M
 
 #=================================================
 # RETRIEVE ARGUMENTS FROM THE MANIFEST
@@ -20,71 +16,69 @@ db_prefix="$(ynh_string_random --length="5" | tr '[:upper:]' '[:lower:]' | tr -d
 #=================================================
 # STORE SETTINGS FROM MANIFEST
 #=================================================
-ynh_script_progression --message="Storing installation settings..."
+ynh_script_progression "Storing installation settings..."
 
-ynh_app_setting_set --app=$app --key=secret --value=$secret
-ynh_app_setting_set --app=$app --key=db_prefix --value=$db_prefix
+ynh_app_setting_set --key=secret --value=$secret
+ynh_app_setting_set --key=db_prefix --value=$db_prefix
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..."
+ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
 
-chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
-
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data "$install_dir"
 #=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring PHP-FPM..."
+ynh_script_progression "Configuring PHP-FPM..."
 
-ynh_add_fpm_config
+ynh_config_add_phpfpm
 
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 #=================================================
 # SPECIFIC SETUP
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-# ynh_script_progression --message="Adding a configuration file..."
+# ynh_script_progression "Adding $app's configuration..."
 
-# ynh_add_config --template="configuration.php" --destination="$install_dir/configuration.php"
+# ynh_config_add --template="configuration.php" --destination="$install_dir/configuration.php"
 
-# chmod 400 "$install_dir/configuration.php"
-# chown $app:$app "$install_dir/configuration.php"
+# #REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 400 "$install_dir/configuration.php"
+# #REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown $app:$app "$install_dir/configuration.php"
 
 #=================================================
 # SETUP DATABASE
 #=================================================
-ynh_script_progression --message="Setuping database..."
+ynh_script_progression "Setuping database..."
 
 pushd "$install_dir"
-	php$phpversion installation/joomla.php install --admin-user="$admin" --admin-username="$admin" --admin-password="$password" --admin-email="$email" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix --site-name="My joomla website" -n
+	php$php_version installation/joomla.php install --admin-user="$admin" --admin-username="$admin" --admin-password="$password" --admin-email="$email" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix --site-name="My joomla website" -n
 popd
 
-# fix config file ownership 
-chown $app:www-data "$install_dir/configuration.php"
+# fix config file ownership
 
-#=================================================
-# GENERIC FINALIZATION
+#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown $app:www-data "$install_dir/configuration.php"
+
 #=================================================
 # SETUP LOGROTATE
 #=================================================
-ynh_script_progression --message="Configuring log rotation..."
+ynh_script_progression "Configuring log rotation..."
 
 mkdir -p "/var/log/$app"
-chmod 750 "/var/log/$app"
-chmod -R o-rwx "/var/log/$app"
-chown -R $app:www-data "/var/log/$app"
+#REMOVEME? Assuming ynh_config_add_logrotate is called, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 750 "/var/log/$app"
+#REMOVEME? Assuming ynh_config_add_logrotate is called, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "/var/log/$app"
+#REMOVEME? Assuming ynh_config_add_logrotate is called, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data "/var/log/$app"
 
 # Use logrotate to manage application logfile(s)
-ynh_use_logrotate
+ynh_config_add_logrotate
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed"
+ynh_script_progression "Installation of $app completed"

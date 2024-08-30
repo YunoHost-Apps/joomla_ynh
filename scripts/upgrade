@@ -1,89 +1,76 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
-#=================================================
-# CHECK VERSION
-#=================================================
+ynh_app_setting_set_default --key=php_upload_max_filesize --value=128M
 
-upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
-# STANDARD UPGRADE STEPS
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-ynh_script_progression --message="Ensuring downward compatibility..."
+ynh_script_progression "Ensuring downward compatibility..."
 
 # If secret doesn't exist, create it
 if [ -z "$secret" ]; then
 	secret=""
-	ynh_app_setting_set --app=$app --key=secret --value=$secret
+	ynh_app_setting_set --key=secret --value=$secret
 fi
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 
-if [ "$upgrade_type" == "UPGRADE_APP" ]
+# FIXME: this is still supported but the recommendation is now to *always* re-setup the app sources wether or not the upstream sources changed
+if ynh_app_upstream_version_changed
 then
-	ynh_script_progression --message="Upgrading source files..."
+	ynh_script_progression "Upgrading source files..."
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="configuration.php"
+	ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="configuration.php"
 	# Run internal update of joomla fixing missing database tables
 	pushd "$install_dir"
-		php$phpversion cli/joomla.php core:update
+		php$php_version cli/joomla.php core:update
 	popd
 	# Remove installation directory
-	ynh_secure_remove --file="$install_dir/installation"
+	ynh_safe_rm "$install_dir/installation"
         # Fix #34
-        ynh_secure_remove --file="$install_dir/administrator/cache/autoload_psr4.php" 
+        ynh_safe_rm "$install_dir/administrator/cache/autoload_psr4.php"
+
 fi
 
-chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
-
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
+#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data "$install_dir"
 #=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Upgrading PHP-FPM configuration..."
+ynh_script_progression "Upgrading PHP-FPM configuration..."
 
 # Create a dedicated PHP-FPM config
-ynh_add_fpm_config
+ynh_config_add_phpfpm
 
 # Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 mkdir -p "/var/log/$app"
-chmod 750 "/var/log/$app"
-chmod -R o-rwx "/var/log/$app"
-chown -R $app:www-data "/var/log/$app"
+#REMOVEME? Assuming ynh_config_add_logrotate is called, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 750 "/var/log/$app"
+#REMOVEME? Assuming ynh_config_add_logrotate is called, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "/var/log/$app"
+#REMOVEME? Assuming ynh_config_add_logrotate is called, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data "/var/log/$app"
 
 # Use logrotate to manage app-specific logfile(s)
-ynh_use_logrotate --non-append
+ynh_config_add_logrotate
 
-#=================================================
-# SPECIFIC UPGRADE
 #=================================================
 # RESTORE A CONFIG FILE
 #=================================================
-# ynh_script_progression --message="Restoring configuration file..."
+# ynh_script_progression "Restoring configuration file..."
 
-# ynh_add_config --template="configuration.php" --destination="$install_dir/configuration.php"
+# ynh_config_add --template="configuration.php" --destination="$install_dir/configuration.php"
 
-# chmod 400 "$install_dir/configuration.php"
-# chown $app:$app "$install_dir/configuration.php"
+# #REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 400 "$install_dir/configuration.php"
+# #REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown $app:$app "$install_dir/configuration.php"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of $app completed"
+ynh_script_progression "Upgrade of $app completed"
