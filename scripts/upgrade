@@ -10,12 +10,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# CHECK VERSION
-#=================================================
-
-upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
 # STANDARD UPGRADE STEPS
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
@@ -31,22 +25,19 @@ fi
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
+ynh_script_progression --message="Upgrading source files..."
 
-if [ "$upgrade_type" == "UPGRADE_APP" ]
-then
-	ynh_script_progression --message="Upgrading source files..."
+# Download, check integrity, uncompress and patch the source from app.src
+ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="administrator modules components images language plugins templates configuration.php layouts media"
+# Run internal update of joomla fixing missing database tables
 
-	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$install_dir" --full_replace=1 --keep="configuration.php"
-	# Run internal update of joomla fixing missing database tables
-	pushd "$install_dir"
-		php$phpversion cli/joomla.php core:update
-	popd
-	# Remove installation directory
-	ynh_secure_remove --file="$install_dir/installation"
-        # Fix #34
-        ynh_secure_remove --file="$install_dir/administrator/cache/autoload_psr4.php" 
-fi
+pushd "$install_dir"
+	php$phpversion cli/joomla.php core:update
+popd
+# Remove installation directory
+ynh_secure_remove --file="$install_dir/installation"
+# Fix #34
+ynh_secure_remove --file="$install_dir/administrator/cache/autoload_psr4.php" 
 
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
