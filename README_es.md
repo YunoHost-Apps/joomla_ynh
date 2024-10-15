@@ -19,7 +19,7 @@ No se debe editar a mano.
 Joomla! is a free and open-source content management system (CMS) for publishing web content. Over the years Joomla! has won several awards. It is built on a model–view–controller web application framework that can be used independently of the CMS that allows you to build powerful online applications.
 
 
-**Versión actual:** 5.1.4~ynh1
+**Versión actual:** 5.2.0~ynh1
 
 ## Capturas
 
@@ -39,7 +39,7 @@ Joomla! is a free and open-source content management system (CMS) for publishing
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/joomla_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/joomla_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
