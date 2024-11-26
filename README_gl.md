@@ -5,7 +5,9 @@ NON debe editarse manualmente.
 
 # Joomla para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/joomla.svg)](https://ci-apps.yunohost.org/ci/apps/joomla/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/joomla)](https://ci-apps.yunohost.org/ci/apps/joomla/)
+![Estado de funcionamento](https://apps.yunohost.org/badge/state/joomla)
+![Estado de mantemento](https://apps.yunohost.org/badge/maintained/joomla)
 
 [![Instalar Joomla con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=joomla)
 
@@ -19,7 +21,7 @@ NON debe editarse manualmente.
 Joomla! is a free and open-source content management system (CMS) for publishing web content. Over the years Joomla! has won several awards. It is built on a model–view–controller web application framework that can be used independently of the CMS that allows you to build powerful online applications.
 
 
-**Versión proporcionada:** 5.2.1~ynh1
+**Versión proporcionada:** 5.2.2~ynh1
 
 ## Capturas de pantalla
 
