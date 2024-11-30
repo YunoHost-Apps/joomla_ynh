@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # Joomla voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/joomla.svg)](https://ci-apps.yunohost.org/ci/apps/joomla/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/joomla)](https://ci-apps.yunohost.org/ci/apps/joomla/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/joomla)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/joomla)
 
 [![Joomla met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=joomla)
 
@@ -19,7 +21,7 @@ Hij mag NIET handmatig aangepast worden.
 Joomla! is a free and open-source content management system (CMS) for publishing web content. Over the years Joomla! has won several awards. It is built on a model–view–controller web application framework that can be used independently of the CMS that allows you to build powerful online applications.
 
 
-**Geleverde versie:** 5.2.1~ynh1
+**Geleverde versie:** 5.2.2~ynh1
 
 ## Schermafdrukken
 
