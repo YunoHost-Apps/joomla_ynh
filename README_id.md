@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Joomla untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/joomla.svg)](https://ci-apps.yunohost.org/ci/apps/joomla/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/joomla)](https://ci-apps.yunohost.org/ci/apps/joomla/)
+![Status kerja](https://apps.yunohost.org/badge/state/joomla)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/joomla)
 
 [![Pasang Joomla dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=joomla)
 
@@ -19,7 +21,7 @@ Ini TIDAK boleh diedit dengan tangan.
 Joomla! is a free and open-source content management system (CMS) for publishing web content. Over the years Joomla! has won several awards. It is built on a model–view–controller web application framework that can be used independently of the CMS that allows you to build powerful online applications.
 
 
-**Versi terkirim:** 5.2.1~ynh1
+**Versi terkirim:** 5.2.2~ynh1
 
 ## Tangkapan Layar
 

@@ -5,7 +5,9 @@
 
 # YunoHost 上的 Joomla
 
-[![集成程度](https://dash.yunohost.org/integration/joomla.svg)](https://ci-apps.yunohost.org/ci/apps/joomla/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/joomla.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/joomla.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/joomla)](https://ci-apps.yunohost.org/ci/apps/joomla/)
+![工作状态](https://apps.yunohost.org/badge/state/joomla)
+![维护状态](https://apps.yunohost.org/badge/maintained/joomla)
 
 [![使用 YunoHost 安装 Joomla](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=joomla)
 
@@ -19,7 +21,7 @@
 Joomla! is a free and open-source content management system (CMS) for publishing web content. Over the years Joomla! has won several awards. It is built on a model–view–controller web application framework that can be used independently of the CMS that allows you to build powerful online applications.
 
 
-**分发版本：** 5.2.1~ynh1
+**分发版本：** 5.2.2~ynh1
 
 ## 截图
 
