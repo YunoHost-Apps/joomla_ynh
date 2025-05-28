@@ -3,8 +3,6 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-ynh_app_setting_set_default --key=php_upload_max_filesize --value=128M
-
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
@@ -16,13 +14,15 @@ if [ -z "$secret" ]; then
 	ynh_app_setting_set --key=secret --value=$secret
 fi
 
+ynh_app_setting_set_default --key=php_upload_max_filesize --value=128M
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="configuration.php"
+ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="administrator modules components images language plugins templates configuration.php layouts media"
 	
 # Run internal update of joomla fixing missing database tables
 pushd "$install_dir"
@@ -33,6 +33,9 @@ popd
 ynh_safe_rm "$install_dir/installation"
 # Fix #34
 ynh_safe_rm "$install_dir/administrator/cache/autoload_psr4.php"
+
+chmod -R o-rwx "$install_dir"
+chown -R $app:www-data "$install_dir"
 
 #=================================================
 # PHP-FPM CONFIGURATION
