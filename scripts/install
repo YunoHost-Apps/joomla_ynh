@@ -3,8 +3,6 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-ynh_app_setting_set --key=php_upload_max_filesize --value=128M
-
 #=================================================
 # RETRIEVE ARGUMENTS FROM THE MANIFEST
 #=================================================
@@ -12,6 +10,8 @@ ynh_app_setting_set --key=php_upload_max_filesize --value=128M
 email=$(ynh_user_get_info --username="$admin" --key="mail")
 secret=$(ynh_string_random --length="16")
 db_prefix="$(ynh_string_random --length="5" | tr '[:upper:]' '[:lower:]' | tr -d '0123456789')_"
+
+ynh_app_setting_set --key=php_upload_max_filesize --value=128M
 
 #=================================================
 # STORE SETTINGS FROM MANIFEST
@@ -54,8 +54,7 @@ pushd "$install_dir"
 popd
 
 # fix config file ownership
-
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown $app:www-data "$install_dir/configuration.php"
+#chown $app:www-data "$install_dir/configuration.php"
 
 #=================================================
 # SETUP LOGROTATE
