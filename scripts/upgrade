@@ -22,7 +22,7 @@ ynh_app_setting_set_default --key=php_upload_max_filesize --value=128M
 ynh_script_progression "Upgrading source files..."
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="administrator modules components images language plugins templates configuration.php layouts media"
+# ynh_setup_source --dest_dir="$install_dir" --full_replace --keep="administrator modules components images language plugins templates configuration.php layouts media"
 	
 # Run internal update of joomla fixing missing database tables
 pushd "$install_dir"
