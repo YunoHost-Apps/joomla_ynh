@@ -5,7 +5,7 @@ name = "Joomla"
 description.en = "Content management system"
 description.fr = "Système de gestion de contenu libre"
 
-version = "5.3.1~ynh1"
+version = "5.3.1~ynh2"
 
 maintainers = []
 
