@@ -11,12 +11,16 @@ It shall NOT be edited by hand.
 Content management system
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://www.joomla.org/)
-[![Version: 5.3.1~ynh3](https://img.shields.io/badge/Version-5.3.1~ynh3-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/joomla/)
+[![Version: 5.3.3~ynh1](https://img.shields.io/badge/Version-5.3.3~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/joomla/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/joomla"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
 <a href="https://github.com/YunoHost-Apps/joomla_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
 </div>
+
+
+## Screenshots
+![Screenshot of Joomla](./doc/screenshots/screenshot.jpg)
 
 ## 📦 Developer info
 
