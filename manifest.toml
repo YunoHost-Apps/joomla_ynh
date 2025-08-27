@@ -7,7 +7,7 @@ description.fr = "Système de gestion de contenu libre"
 
 version = "5.3.3~ynh1"
 
-maintainers = []
+maintainers = ["DeMiro5001"]
 
 [upstream]
 license = "GPL-2.0-only"
