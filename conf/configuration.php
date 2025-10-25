@@ -31,6 +31,7 @@ class JConfig
 	public $display_offline_message = 1;
 	public $offline_image = '';
 	public $sitename = 'Joomla!';            // Name of Joomla site
+	public $live_site = 'https://__DOMAIN____PATH__';
 	public $editor = 'tinymce';
 	public $captcha = 0;
 	public $list_limit = 20;
