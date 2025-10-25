@@ -27,7 +27,7 @@ ynh_setup_source --dest_dir="$install_dir"
 # Run internal update of joomla fixing missing database tables
 pushd "$install_dir"
 	php$php_version cli/joomla.php core:update
-    #    php$php_version cli/joomla.php maintenance:database --fix
+    php$php_version cli/joomla.php maintenance:database --fix
 popd
 	
 # Remove installation directory
