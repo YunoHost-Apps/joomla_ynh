@@ -50,8 +50,7 @@ ynh_config_add_nginx
 ynh_script_progression "Setuping database..."
 
 pushd "$install_dir"
-	php$php_version installation/joomla.php install --admin-user="$admin" --admin-username="$admin" --admin-password="$password" --admin-email="$email" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix --site-name="My joomla website" -n
-    php$php_version cli/joomla.php  --live-site="$domain$path"
+	php$php_version installation/joomla.php install --admin-user="$admin" --admin-username="$admin" --admin-password="$password" --admin-email="$email" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix --site-name="My joomla website"  --live-site="$domain$path" -n
 popd
 
 # fix config file ownership
