@@ -53,8 +53,9 @@ pushd "$install_dir"
 	php$php_version installation/joomla.php install --admin-user="$admin" --admin-username="$admin" --admin-password="$password" --admin-email="$email" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix --site-name="My joomla website" -n
 popd
 
-# fix config file ownership
-#chown $app:www-data "$install_dir/configuration.php"
+# fix config file ownership and make it readonly 
+chown $app:www-data "$install_dir/configuration.php"
+chmod 400  "$install_dir/configuration.php" 
 
 #=================================================
 # SETUP LOGROTATE
