@@ -58,7 +58,7 @@ class JConfig
 	public $helpurl = 'https://help.joomla.org/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}';
 	public $tmp_path = '/tmp';                // This path needs to be writable by Joomla!
 	public $log_path = '/var/log/__APP__';    // This path needs to be writable by Joomla!
-	public $live_site = '';                   // Optional, full URL to Joomla install.
+	public $live_site = 'https://__DOMAIN____PATH';                   // Optional, full URL to Joomla install.
 	public $force_ssl = 0;                    // Force areas of the site to be SSL ONLY.  0 = None, 1 = Administrator, 2 = Both Site and Administrator
 
 	/* Locale Settings */
@@ -137,7 +137,7 @@ class JConfig
 	public $feed_email = 'none';
 
 	/* Cookie Settings */
-	public $cookie_domain = '';
+	public $cookie_domain = '__DOMAIN__';
 	public $cookie_path = '';
 
 	/* Miscellaneous Settings */
