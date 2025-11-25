@@ -5,7 +5,7 @@ name = "Joomla"
 description.en = "Content management system"
 description.fr = "Système de gestion de contenu libre"
 
-version = "6.0.0~ynh3"
+version = "6.0.1~ynh1"
 
 maintainers = ["DeMiro5001"]
 
@@ -51,8 +51,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/joomla/joomla-cms/releases/download/6.0.0/Joomla_6.0.0-Stable-Full_Package.tar.gz"
-        sha256 = "e45d99af9700e210607339e71a512a4910b4c97d457411f9c50a59f7526e65df"
+        url = "https://github.com/joomla/joomla-cms/releases/download/6.0.1/Joomla_6.0.1-Stable-Full_Package.tar.gz"
+        sha256 = "0aea78bef926cc2e0846e2087decf3ad1d167dc523f903d89f7af7db2793419a"
         in_subdir = false
         autoupdate.strategy = "latest_github_release"
         autoupdate.asset = "^Joomla_.*-Stable-Full_Package.tar.gz$"
