@@ -53,6 +53,8 @@ pushd "$install_dir"
 	php$php_version installation/joomla.php install --admin-user="$admin" --admin-username="$admin" --admin-password="$password" --admin-email="$email" --db-type=mysql --db-host=localhost --db-user=$db_user --db-pass=$db_pwd --db-name=$db_name --db-prefix=$db_prefix --site-name="My joomla website" -n
 popd
 
+chown -R $app:www-data "$install_dir"
+
 # fix config file ownership and make it readonly 
 chown $app:www-data "$install_dir/configuration.php"
 chmod 400  "$install_dir/configuration.php" 
@@ -63,6 +65,7 @@ chmod 400  "$install_dir/configuration.php"
 ynh_script_progression "Configuring log rotation..."
 
 mkdir -p "/var/log/$app"
+chown $app:www-data "/var/log/$app"
 
 # Use logrotate to manage application logfile(s)
 ynh_config_add_logrotate
